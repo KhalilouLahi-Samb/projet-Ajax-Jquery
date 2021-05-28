@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../traitement//DataTables/datatables.min.css">
+    <script src="../traitement//DataTables/datatables.min.js"></script>
+    <title>Vente</title>
+</head>
+<body>
+    <main style="border: 1px solid red; width: 80%;">
+        <table id="table_vente" style="width: 100%;">
+            <thead>
+              <tr>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Age</th>
+                  <th>Nickname</th>
+                  <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="body">
+                <!-- <tr>
+                    <td>1</td>
+                    <td>Abdou</td>
+                    <td>Bon</td>
+                    <td>20</td>
+                    <td>Mister TINE</td>
+                    <td><i class="fas fa-asterisk"></i><i class="fas fa-asterisk"></i><i class="fas fa-asterisk"></i></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Abdou</td>
+                    <td>Bon</td>
+                    <td>20</td>
+                    <td>Mister TINE</td>
+                    <td><i class="fas fa-asterisk"></i><i class="fas fa-asterisk"></i><i class="fas fa-asterisk"></i></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Abdou</td>
+                    <td>Bon</td>
+                    <td>20</td>
+                    <td>Mister TINE</td>
+                    <td><i class="fas fa-asterisk"></i><i class="fas fa-asterisk"></i><i class="fas fa-asterisk"></i></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Abdou</td>
+                    <td>Bon</td>
+                    <td>20</td>
+                    <td>Mister TINE</td>
+                    <td><i class="fas fa-asterisk"></i><i class="fas fa-asterisk"></i><i class="fas fa-asterisk"></i></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Abdou</td>
+                    <td>Bon</td>
+                    <td>20</td>
+                    <td>Mister TINE</td>
+                    <td><i class="fas fa-asterisk"></i><i class="fas fa-asterisk"></i><i class="fas fa-asterisk"></i></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Abdou</td>
+                    <td>Bon</td>
+                    <td>20</td>
+                    <td>Mister TINE</td>
+                    <td><i class="fas fa-asterisk"></i><i class="fas fa-asterisk"></i><i class="fas fa-asterisk"></i></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Abdou</td>
+                    <td>Bon</td>
+                    <td>20</td>
+                    <td>Mister TINE</td>
+                    <td><i class="fas fa-asterisk"></i><i class="fas fa-asterisk"></i><i class="fas fa-asterisk"></i></td>
+                </tr> -->
+            </tbody>      
+        </table>
+    </main>
+
+    <script>
+       
+
+        $.get('../traitement/php/selection_client_bd.php', function(data) {
+			var donnees = JSON.parse(data);
+			donnees.forEach(function (el) {
+				$('#body').append(ligneTableau(el));
+			});
+			// console.log(donnees);
+		});
+		function ligneTableau(donnees) {
+			return '<tr>' +
+                        '<td>' + donnees.id_cli + '<td>' +
+                        '<td>' + donnees.prenom_cli + donnees.nom_cli +'<td>' +
+                        '<td>Bon<td>' 
+                        '<td>20<td>' +
+                        '<td> Mister'+donnees.id_cli + donnees.prenom_cli + donnees.nom_cli + '<td>' +
+                        '<td><i class="fas fa-asterisk"></i><i class="fas fa-asterisk"></i><i class="fas fa-asterisk"></i></td>' +
+                    '</tr>';
+		} 
+        $(document).ready( function () {
+            $('#table_vente').DataTable();
+        } );
+    </script>
+</body>
+</html>

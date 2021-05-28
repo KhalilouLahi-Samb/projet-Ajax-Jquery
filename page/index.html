@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="../traitement/css/style.css">
+        <!-- <link rel="stylesheet" href="../traitement/css/bootstrap.css"> -->
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <script src="../traitement/jquery/jquery-3.6.0.min.js"></script>
+
+    </head>
+    <body>
+        <!-- wrapper start -->
+        <div class="wrapper border border-danger">
+            <!-- header menu start -->
+            <div class="header">
+                <div class="header-menu">
+                    <div class="logo">
+                        <img src="../p1.jpg" alt="" srcset="">&nbsp;&nbsp;<div class="title">PIGEON <span>ONLINE</span></span></div>
+                    </div>
+                    <ul>
+                        <li id="ventes">
+                            <a href="#" style=" margin-bottom: 40px;">
+                                <i class="fas fa-arrow-alt-circle-right" style="font-size: 40px;"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- header menu end -->
+            <!-- sidebar start -->
+            <div class="sidebar">
+                 <div class="sidebar-menu">
+                    <center class="profile">
+                        <img src="../p1.jpg">
+                        <p>image 1</p>
+                    </center>
+                    <li class="item" id="accueil">
+                        <a href="#" class="menu-btn">
+                          <i class="fas fa-home"></i><span>Accueil</span>
+                        </a>
+                    </li>
+                    <li class="item" id="article">
+                        <a href="#" class="menu-btn" id="articles">
+                            <i class="far fa-address-card"></i><span>Gestion des articles</span><i class="fas fa-angle-double-right drop-down"></i>
+                        </a>
+                    </li>
+                    <li class="item" id="vente">
+                        <a href="#" class="menu-btn">
+                          <i class="fas fa-cart-plus"></i><span>Gestion des ventes</span><i class="fas fa-angle-double-right drop-down"></i>
+                        </a>
+                    </li>
+                      <li class="item" id="achat">
+                          <a href="#" class="menu-btn">
+                            <i class="fas fa-headphones"></i><span>Gestion des achats</span><i class="fas fa-angle-double-right drop-down"></i>
+                          </a>
+                      </li>
+                      <li class="item" id="clientele">
+                        <a href="#" class="menu-btn">
+                          <i class="fas fa-arrows-alt"></i><span>Gestion de la clientèle</span><i class="fas fa-angle-double-right drop-down"></i>
+                        </a>
+                      </li>
+                      <li class="item" id="inventaire">
+                        <a href="#" class="menu-btn">
+                          <i class="fas fa-external-link-square-alt"></i><span>Faire un inventaire </span><i class="fas fa-angle-double-right drop-down"></i>
+                        </a>
+                      </li>
+                      <li class="item"> 
+                        <a href="#" class="menu-btn"  id="depenseRecette">
+                          <i class="fas fa-exchange-alt"></i><span>Depense & Recette</span><i class="fas fa-angle-double-right drop-down"></i>
+                        </a>
+                        <div class="sub-menu">
+                            <a href="#" id="depense"><i class="fas fa-comment-dollar"></i> <span>Dépenses</span></a>
+                            <a href="#" id="recette"><i class="fas fa-eye-slash"></i><span>Recette</span></a>
+                        </div>
+                      </li>
+
+                 </div>
+            </div>
+            <!-- sidebar end -->
+            <!--main container start-->
+            <div class="main-container">
+                <div class="sidebar-btn" style="display: flex; width: 50%;">
+                    <i class="fas fa-bars"></i>&nbsp;&nbsp;<p style="font-weight: normal; font-size:30px;" id="title">Accueil ></p>
+                </div>
+                <div class="container" id="containerFirst">
+
+                </div>
+             </div>   
+            <!--main container end-->
+            
+        </div>
+        <!-- wrapper end -->
+
+        <script type="text/javascript">
+        $(document).ready(function(){
+            $(".sidebar-btn").click(function(){
+                $(".wrapper").toggleClass("collapse");
+            });
+        });
+
+        $('.container').load('creation_commande.html');
+
+        $('#accueil').on('click', function(){
+            $.get('creation_commande.html', function(data){
+                $('#containerFirst').html(data)
+            });
+
+            $('#title').html('Accueil >');
+
+            $('title').html('Accueil');
+        });
+
+        $('#article').on('click',function() {
+           $.get('update.html', function (contenu) {
+            $('#containerFirst').html(contenu)
+           });
+
+           $('#title').html('Accueil > Article');
+           $('title').html('Accueil || Article');
+        });
+
+        $('#vente').on('click',function() {
+           $.get('vente.html', function (contenu) {
+            $('#containerFirst').html(contenu)
+           });
+
+           $('#title').html('Accueil > Vente');
+           $('title').html('Accueil || Vente');
+        });
+
+        $('#achat').on('click',function() {
+           $.get('creation_commande.html', function (contenu) {
+            $('#containerFirst').html(contenu)
+           });
+
+           $('#title').html('Accueil > Achat');
+           $('title').html('Accueil || Achat');
+        });
+
+        $('#clientele').on('click',function() {
+           $.get('clientele.html', function (contenu) {
+            $('#containerFirst').html(contenu)
+           });
+
+           $('#title').html('Accueil > Clientele');
+           $('title').html('Accueil || Clentele');
+        });
+
+        $('#inventaire').on('click',function() {
+           $.get('invetaire.html', function (contenu) {
+            $('#containerFirst').html(contenu)
+           });
+
+           $('#title').html('Accueil > Inventaire');
+           $('title').html('Accueil || Inventaire');
+        });
+
+        $('.sub-menu #depense').on('click', function(){
+            $.get('depense.html', function(contenu){
+                $('#containerFirst').html(contenu)
+            });
+
+            $('#title').html('Accueil > Depense & Recette > Depense');
+            $('title').html('Accueil || Depense & Recette || Depense');
+        });
+
+        $('.sub-menu #recette').on('click', function(){
+            $.get('recette.html', function(contenu){
+                $('#containerFirst').html(contenu)
+            });
+
+            $('#title').html('Accueil > Depense & Recette > Recette');
+            $('title').html('Accueil || Depense & Recette || Recette');
+        });
+        </script>
+    </body>
+</html>
